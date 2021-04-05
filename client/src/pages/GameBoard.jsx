@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import RowBox from '../components/RowBox'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBoard } from '../store/actions/GameAction'
@@ -16,9 +16,14 @@ export default function GameBoard() {
     dispatch(fetchBoard())
   }, [])
 
+  const onPressValidate = (e) => {
+    e.preventDefault()
+
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Hello Agung</Text>
+      <Text style={styles.header}>Welcome to Sudoku</Text>
       <Text>
         {
           loading || board.length < 1 ? <Text>Loading ...</Text> :
@@ -28,6 +33,12 @@ export default function GameBoard() {
           })
         }
       </Text>
+      <Button style={styles.button}
+        onPress={(e) => onPressValidate(e)}
+        title="Submit your input"
+        color="#91c788"
+        accessibilityLabel="Learn more about this purple button"
+      ></Button>
     </View>
   )
 }
@@ -39,4 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header: {
+    marginBottom: 20
+  }
 });
