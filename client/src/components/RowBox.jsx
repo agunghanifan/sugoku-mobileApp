@@ -9,8 +9,8 @@ export default function SquareBig(props) {
     <View>
       <Text>
         {
-          row.map(col => {
-            return <ColBox col={col} key={col} />
+          row.map((col, index) => {
+            return <ColBox col={col} key={index} />
           })
         }
       </Text>

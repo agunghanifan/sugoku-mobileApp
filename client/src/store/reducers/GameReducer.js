@@ -1,5 +1,6 @@
 const initialstate = {
   board: [],
+  boardInitial: [],
   loading: false,
   errorBoard: null
 }

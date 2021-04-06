@@ -28,8 +28,8 @@ export default function GameBoard() {
         {
           loading || board.length < 1 ? <Text>Loading ...</Text> :
           errorBoard ? <Text>We found some Errors, here {JSON.stringify(errorBoard)}</Text> :
-          board.map(row => {
-            return <RowBox key={row} row={row} />
+          board.map((row, index) => {
+            return <RowBox key={index} row={row} />
           })
         }
       </Text>

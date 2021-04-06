@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default function ColBox(props) {
   const { col } = props
-  const [number, setNumber] = useState(0)
 
   return (
     <View>
@@ -12,9 +11,9 @@ export default function ColBox(props) {
         <TextInput
         style={styles.input}
         onChangeText={setNumber}
-        value={number}
+        value={col}
         maxLength={1}
-        keyboardType="phone-pad"
+        keyboardType='number-pad'
         />
       }
     </View>
