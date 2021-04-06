@@ -4,7 +4,7 @@ import ColBox from './ColBox'
 
 export default function SquareBig(props) {
   const { row } = props
-  console.log(row)
+  
   return (
     <View>
       <Text>
