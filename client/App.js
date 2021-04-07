@@ -13,14 +13,14 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-          <Provider store={store}>
-            <StatusBar style="auto" />
-            <Stack.Navigator initialRouteName="Home">
-              <Stack.Screen name="Home" component={Home} />
-              <Stack.Screen name="Game Board" component={GameBoard} />
-              <Stack.Screen name="Finish" component={Finish} />
-            </Stack.Navigator>
-        </Provider>
+      <Provider store={store}>
+        <StatusBar style="auto" />
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Game Board" component={GameBoard} />
+            <Stack.Screen name="Finish" component={Finish} />
+          </Stack.Navigator>
+      </Provider>
     </NavigationContainer>
   );
 }

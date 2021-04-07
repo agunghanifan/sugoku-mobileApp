@@ -17,9 +17,13 @@ export function setStatusBoard (payload) {
 export function fetchBoard (payload) {
   return (dispatch) => {
     console.log('masuk fetchboard')
-    console.log(payload)
+    console.log(payload, 'ini payload')
     dispatch(setLoadingBoard(true))
-    fetch(`https://sugoku.herokuapp.com/board?difficulty=${payload}`)
+    fetch(`https://sugoku.herokuapp.com/board?difficulty=${payload}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then(res => res.json())
       .then(board => {
         console.log(board.board, 'ini hasil fetchboard')

@@ -1,10 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 
-export default function Finish({ navigation }) {
+export default function Finish({ route, navigation }) {
+  const { username } = route.params
   return (
-    <View>
-      <Text> Congratulations to completed the game!, you can back to Home to play again.</Text>
+    <View style={styles.container}>
+      <Text>Congratulations {String(username)} to completed the game!</Text>
+      <View style={styles.padding}>
+        <Image
+          style={styles.tinyLogo}
+            source={{
+              uri: 'https://media.giphy.com/media/vmtxnxveVUodG/giphy.gif',
+            }}
+          />
+      </View>
+      <Text>You can back to Home to play again.</Text>
         <Button
           onPress={() => navigation.navigate('Home')}
           title="Back to Home"
@@ -19,9 +29,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
   },
   header: {
     marginBottom: 20
+  },
+  tinyLogo: {
+    width: 380,
+    height: 200,
+    alignSelf: 'center',
   }
 });

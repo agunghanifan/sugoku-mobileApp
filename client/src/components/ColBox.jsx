@@ -24,11 +24,19 @@ export default function ColBox(props) {
         style={styles.inputCannotEdited}
         >{newCol}</Text> 
         :
-        <TextInput
+        newCol > 0 ? <TextInput
         style={styles.input}
         onChangeText={setNewCol}
         onEndEditing={changeBoardNumber}
         defaultValue={String(newCol)}
+        maxLength={1}
+        keyboardType='numeric'
+        /> :
+        <TextInput
+        style={styles.input}
+        onChangeText={setNewCol}
+        onEndEditing={changeBoardNumber}
+        defaultValue=''
         maxLength={1}
         keyboardType='numeric'
         />
