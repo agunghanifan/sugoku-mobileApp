@@ -4,14 +4,12 @@ import { StatusBar, StyleSheet, Text, Button, View, TextInput, Image,
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function Home ({ navigation }) {
-  const dispatch = useDispatch()
   const [yourName, setYourName] = useState('People')
   const dataDifficulty = useSelector(state => state.gameReducer.dataDifficulty)
   const data = []
 
   function gotoGame (e, payload) {
     e.preventDefault()
-    // Alert.alert(JSON.stringify(payload))
     if (!payload.username) payload.username = "People"
     navigation.navigate('Game Board', {
       username: payload.username,
@@ -101,8 +99,6 @@ const styles = StyleSheet.create({
     width: 300,
     height: 300,
     alignSelf: 'center',
-
-  },
-
+  }
 });
 

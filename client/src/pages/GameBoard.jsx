@@ -55,12 +55,6 @@ export default function GameBoard({ route, navigation }) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
           <Text style={styles.header}>Welcome to Sudoku, {String(username)}</Text>
-          {/* <Text>
-            {JSON.stringify(boardDisplay)}
-          </Text>
-          <Text>
-            {JSON.stringify(boardInitial)}
-          </Text> */}
           <View style={styles.header}>
             <Text>
               {
@@ -95,7 +89,6 @@ export default function GameBoard({ route, navigation }) {
             title="Submit your answer!"
             color="#91c788"
           ></Button>
-          
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

@@ -16,8 +16,7 @@ export function setStatusBoard (payload) {
 
 export function fetchBoard (payload) {
   return (dispatch) => {
-    console.log('masuk fetchboard')
-    console.log(payload, 'ini payload')
+    console.log("masuk fetch Board")
     dispatch(setLoadingBoard(true))
     fetch(`https://sugoku.herokuapp.com/board?difficulty=${payload}`, {
       headers: {
@@ -26,7 +25,6 @@ export function fetchBoard (payload) {
     })
       .then(res => res.json())
       .then(board => {
-        console.log(board.board, 'ini hasil fetchboard')
         dispatch(setErrorBoard(null))
         dispatch(setStatusBoard(''))
         dispatch(setFetchBoard(board.board))
@@ -57,7 +55,6 @@ export function solveSelfBoard (payload) {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         dispatch(setFetchBoard(data.solution))
       })
       .catch(err => {
@@ -79,7 +76,6 @@ export function submitBoard (payload) {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res, 'ini res dari submitboard')
         dispatch(setStatusBoard(res.status))
       })
       .catch(err => {
