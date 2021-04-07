@@ -47,7 +47,7 @@ const encodeParams = (params) =>
 export function solveSelfBoard (payload) {
   return (dispatch) => {
     console.log('masuk self board')
-    dispatch(setLoadingBoard(true))
+    // dispatch(setLoadingBoard(true))
     fetch('https://sugoku.herokuapp.com/solve', {
       method: 'POST',
       body: encodeParams(payload),
@@ -55,20 +55,23 @@ export function solveSelfBoard (payload) {
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data, "ini data solve selfboard")
         dispatch(setFetchBoard(data.solution))
       })
       .catch(err => {
         console.log(err)
         dispatch(setErrorBoard(err))
       })
-      .finally(() => dispatch(setLoadingBoard(false)))
+      // .finally(() => dispatch(setLoadingBoard(false)))
   }
 }
 
 export function submitBoard (payload) {
   return (dispatch) => {
     console.log('masuk submit')
-    dispatch(setLoadingBoard(true))
+    console.log(encodeParams(payload))
+    console.log(payload)
+    // dispatch(setLoadingBoard(true))
     fetch('https://sugoku.herokuapp.com/validate', {
       method: 'POST',
       body: encodeParams(payload),
@@ -76,12 +79,13 @@ export function submitBoard (payload) {
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res , "ini res submit board")
         dispatch(setStatusBoard(res.status))
       })
       .catch(err => {
         console.log(err)
         dispatch(setErrorBoard(err))
       })
-      .finally(() => dispatch(setLoadingBoard(false)))
+      // .finally(() => dispatch(setLoadingBoard(false)))
   }
 }

@@ -29,7 +29,8 @@ export default function GameBoard({ route, navigation }) {
     if (status === 'solved') {
       const timing = setInterval(() => {
         navigation.replace('Finish', {
-          username: username
+          username: username,
+          status: 'finish'
         })
         dispatch(setStatusBoard(''))
         clearInterval(timing)
@@ -45,6 +46,14 @@ export default function GameBoard({ route, navigation }) {
   const refetch = (e) => {
     e.preventDefault()
     dispatch(fetchBoard(String(difficulty)))
+  }
+
+  const onPressQuit = (e) => {
+    e.preventDefault()
+    navigation.replace('Finish', {
+      username: username, 
+      status: 'not finish'
+    })
   }
 
   return (
@@ -68,26 +77,31 @@ export default function GameBoard({ route, navigation }) {
           <Text>
             {
               loading || boardDisplay.board.length < 1 ? <ActivityIndicator size="large" /> :
-              errorBoard ? <Text>We found some Errors, please press another puzzle</Text> :
+              errorBoard ? <View><Text>We found some Errors, please press another puzzle</Text>
+                <Button style={styles.button}
+                  onPress={(e) => refetch(e)}
+                  title="Click me to another puzzle"
+                  color="#ffaaa7"
+                ></Button></View> :
               boardDisplay.board.map((row, index) => {
                 return <RowBox key={index} row={row} i={index} />
               })
             }
           </Text>
           <Button style={styles.button}
-            onPress={(e) => refetch(e)}
-            title="Click me to another puzzle"
-            color="#ffaaa7"
-          ></Button>
-          <Button style={styles.button}
             onPress={(e) => onPressSolve(e)}
             title="Wanna see some magic?"
-            color="#ffd3b4"
+            color="#68B0AB"
           ></Button>
           <Button style={styles.button}
             onPress={(e) => onPressValidate(e)}
             title="Submit your answer!"
             color="#91c788"
+          ></Button>
+          <Button style={styles.button}
+            onPress={(e) => onPressQuit(e)}
+            title="Quit game"
+            color="#ffaaa7"
           ></Button>
         </View>
       </TouchableWithoutFeedback>
@@ -105,7 +119,7 @@ const styles = StyleSheet.create({
   inner: {
     flex: 1,
     padding: 24,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFCF7',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -16,8 +16,30 @@ export default function App() {
       <Provider store={store}>
         <StatusBar style="auto" />
           <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Game Board" component={GameBoard} />
+            <Stack.Screen name="Home" component={Home}
+              options={{
+                title: 'My home',
+                headerStyle: {
+                  backgroundColor: '#f4511e',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+              }}  
+            />
+            <Stack.Screen name="Game Board" component={GameBoard}
+              options={{
+                title: 'Game Board',
+                headerStyle: {
+                  backgroundColor: '#f4511e',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+              }} 
+            />
             <Stack.Screen name="Finish" component={Finish} />
           </Stack.Navigator>
       </Provider>

@@ -24,22 +24,23 @@ export default function ColBox(props) {
         style={styles.inputCannotEdited}
         >{newCol}</Text> 
         :
-        newCol > 0 ? <TextInput
-        style={styles.input}
-        onChangeText={setNewCol}
-        onEndEditing={changeBoardNumber}
-        defaultValue={String(newCol)}
-        maxLength={1}
-        keyboardType='numeric'
-        /> :
         <TextInput
         style={styles.input}
         onChangeText={setNewCol}
         onEndEditing={changeBoardNumber}
-        defaultValue=''
+        defaultValue={col > 0 ? String(col) : ''}
         maxLength={1}
         keyboardType='numeric'
-        />
+        /> 
+        // :
+        // <TextInput
+        // style={styles.input}
+        // onChangeText={setNewCol}
+        // onEndEditing={changeBoardNumber}
+        // defaultValue=''
+        // maxLength={1}
+        // keyboardType='numeric'
+        // />
       }
     </View>
   )
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 35,
     textAlign: 'center',
-    backgroundColor: '#f8ede3',
+    backgroundColor: '#FFFCF7',
     height: 45,
     width: 40,
     borderWidth: 1,
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   inputCannotEdited: {
     fontSize: 35,
     textAlign: 'center',
-    backgroundColor: '#ddffbc',
+    backgroundColor: '#A1B5D8',
     height: 45,
     width: 40,
     borderWidth: 1,

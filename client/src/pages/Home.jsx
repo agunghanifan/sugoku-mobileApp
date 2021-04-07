@@ -42,10 +42,11 @@ export default function Home ({ navigation }) {
               placeholder="Your Name"
               keyboardType="default"
               textAlign= 'center'
+              maxLength={12}
             />
           </View>
           <View style={styles.difficulty}>
-            <Text>Insert your difficulty</Text>
+            <Text>Tap your difficulty to start the game</Text>
             <View style={styles.fixToText}>
               {
                 dataDifficulty.map((difficultyElement, index) => {
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   },
   inner: {
     flex: 1,
-    padding: 24,
+    padding: 78,
     backgroundColor: '#fff',
     alignItems: 'stretch',
     justifyContent: 'space-evenly',
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   tinyLogo: {
     width: 300,
     height: 300,
-    alignSelf: 'center',
+    alignSelf: 'center'
   }
 });
 
